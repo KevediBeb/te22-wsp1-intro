@@ -1,0 +1,15 @@
+{% extends "layout.njk" %}
+{% block content %}
+<main class = "container">
+    <h1>{{movie.title}}</h1>
+    
+    <iframe width="100%" height="550"
+        src="{{movie.video}}">
+    </iframe>
+    <h2>Description: {{movie.desc}}</h2>
+    <time datetime="{{movie.year}}">Date: {{movie.year}}</time>
+    
+
+</main>
+    
+{% endblock %} 
