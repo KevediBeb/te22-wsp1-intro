@@ -2,6 +2,7 @@ import express from "express" // ESM
 import nunjucks from "nunjucks"
 import morgan from "morgan"
 import indexRouter from "./routes/index.js"
+import searchRouter from "./routes/search.js"
 
 const app = express()
 nunjucks.configure("views", {
@@ -16,6 +17,7 @@ app.use(morgan("dev"))
 // lyssna på GET request på webbroten
 
 app.use("/", indexRouter)
+app.use("/search", searchRouter)
 
 
 // testa med att surfa localhost:3000/cjslacjsa
