@@ -22,7 +22,28 @@ const questions = [
         answers: ["yes", "no", "idk", "what"],
         correctAnswer: "what"
 
-    }
+    },
+    {
+        id: "q3",
+        text: "Many answers on this one",
+        answers: ["yes", "indeed", "this is the one though", "no", " ", "blab", "crap", "blap"],
+        correctAnswer: "blab"
+
+    },
+    {
+        id: "q4",
+        text: "And this one is impossible",
+        answers: ["no", "it is possible", "I refuse", "yes it is"],
+        correctAnswer: "it is impossible indeed"
+
+    },
+    {
+        id: "q5",
+        text: "Last one",
+        answers: ["fr"],
+        correctAnswer: "fr"
+
+    },
 ]
 
 router.get("/questions", (req, res) => {
@@ -33,16 +54,35 @@ router.get("/questions", (req, res) => {
     })
 })
 
+
 router.post("/end", (req, res) => {
     const answers = req.body
     console.log(answers)
-    questions.forEach(question =>{
-        const answer = answers[question.id]
-        if(answer == question.correctAnswer){
-            console.log("du har svarat rätt på : ", question.id)
-        }
+    const result = questions.map(question => {
+      const answer = answers[question.id]
+      const correctAnsw = question.correctAnswer
+      
+      return {
+        question: question.text,
+        correct: answer == question.correctAnswer,
+        answer,
+        correctAnsw,
+       
+
+      }
     })
-    res.json(answers)
+    // questions.forEach(question => {
+    //   const answer = answers[question.id]
+    //   if (answer == question.correctAnswer) {
+    //     console.log("Du har svarat rätt på fråga : ", question.id)
+    //   }
+    // })
+
+    
+    res.render("result.njk", {
+      message: "Ditt result at",
+      result
+    })
 })
 
 

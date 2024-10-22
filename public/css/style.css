@@ -4,3 +4,15 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
       
 }
+
+.correct{
+    
+    background-color:rgb(38, 193, 38);
+    color: azure;
+}
+
+.incorrect{
+    
+    background-color: red;
+    color: azure;
+}
